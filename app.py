@@ -11,24 +11,19 @@ CLIENT = InferenceHTTPClient(
     api_key="vlb86oyC1Fuerrheol9q"
 )
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
+@app.route('/upload', methods=["POST"])
+def upload():
+    if request.method == "POST":
+        imagefile = request.files['file']
+        filename = "file.jpeg"  # Save the file with the same name for consistency
 
-    if file:
+        # Save the uploaded image
+        imagefile.save(filename)
+
         try:
-
-            file_bytes=file.read()
-            # Perform inference directly with the file stream
+            # Infer using the InferenceHTTPClient
             with CLIENT.use_configuration(custom_configuration):
-                result = CLIENT.infer(file_bytes, model_id="billing-8eaq6/4")
-            
-            # Extract class name from the result
+                result = CLIENT.infer(filename, model_id="billing-8eaq6//5")
             if result['predictions']:
                 class_name = result['predictions'][0]['class']
             else:
