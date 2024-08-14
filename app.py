@@ -24,7 +24,7 @@ def upload_file():
         try:
             # Perform inference directly with the file stream
             with CLIENT.use_configuration(custom_configuration):
-                result = CLIENT.infer(file.stream, model_id="billing-8eaq6/5")
+                result = CLIENT.infer(file.stream, model_id="billing-8eaq6/4")
             
             # Extract class name from the result
             if result['predictions']:
