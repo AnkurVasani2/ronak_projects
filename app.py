@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from inference_sdk import InferenceHTTPClient, InferenceConfiguration
 
 app = Flask(__name__)
-
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16 MB limit
 # Set up Inference client
 custom_configuration = InferenceConfiguration(confidence_threshold=0.1)
 CLIENT = InferenceHTTPClient(
