@@ -26,7 +26,7 @@ def upload_file():
             file_bytes=file.read()
             # Perform inference directly with the file stream
             with CLIENT.use_configuration(custom_configuration):
-                result = CLIENT.infer(file.stream, model_id="billing-8eaq6/4", format="image/jpeg")
+                result = CLIENT.infer(file_bytes, model_id="billing-8eaq6/4")
             
             # Extract class name from the result
             if result['predictions']:
