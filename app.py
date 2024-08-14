@@ -23,7 +23,7 @@ def upload():
         try:
             # Infer using the InferenceHTTPClient
             with CLIENT.use_configuration(custom_configuration):
-                result = CLIENT.infer(filename, model_id="billing-8eaq6//5")
+                result = CLIENT.infer(filename, model_id="billing-8eaq6/5")
             if result['predictions']:
                 class_name = result['predictions'][0]['class']
             else:
