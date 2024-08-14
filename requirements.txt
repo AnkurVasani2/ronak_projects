@@ -1,0 +1,4 @@
+flask
+Werkzeug
+inference_sdk
+Gunicorn
